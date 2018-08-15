@@ -7,7 +7,7 @@ public class Problema2685 {
 		Scanner sc = new Scanner(System.in);
 		while(sc.hasNextInt()) {
 			int ang = sc.nextInt();
-			//day
+			
 			if((ang < 90 && ang >= 0 )|| (ang == 360)) {
 				System.out.println("Bom Dia!!");
 			}else if(ang >= 90 && ang < 180) {
@@ -18,6 +18,6 @@ public class Problema2685 {
 				System.out.println("De Madrugada!!");
 			}
 		}
-		
+		sc.close();
 	}
 }
