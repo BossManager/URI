@@ -5,30 +5,42 @@ import java.util.Scanner;
 public class Problema2674 {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		while(sc.hasNextLong()) {
-			long num = sc.nextLong();
-			System.out.println(isSuperOrPrimeOrNothing(num));
+		while(sc.hasNextInt()) {
+			int num = sc.nextInt();
+			if(!isPrime(num)) {
+				System.out.println("Nada\n");
+			}else {
+				if(isSuperPrime(num))
+					System.out.println("Super\n");
+				else
+					System.out.println("Primo\n");
+			}
 		}
 		
 		sc.close();
 	}
-
-	private static String isSuperOrPrimeOrNothing(long num) {
-		for(long i = 2;i<num/2;i++) {
-			if(num%i==0)
-				return "Nada";
-		}
-
-		
-		while(num!=0) {
-			long r = num%10;
-			num /=10;
-			if(r==2 || r==3 || r==5 || r==7) 
-				continue;
-			else
-				return "Primo";
-			
-		}
-		return "Super";
+	static boolean isPrime(int n)
+	{
+	    if(n==0||n==1)return false;
+	    if(n==2) return true;
+	    if(n%2==0)return false;
+	    for(int i=3;i<=Math.sqrt(n);i+=2)
+	    {
+	        if(n%i==0)return false;
+	    }
+	    return true;
 	}
+	static boolean isSuperPrime(int n)
+	{
+	    while(n>=10)
+	    {
+	        int s=n%10;
+	        n/=10;
+	        if(!isPrime(s))
+	            return false;
+	    }
+	    if(n==2||n==3||n==7||n==5)return true;
+	    else return false;
+	}
+	
 }
